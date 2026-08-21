@@ -404,6 +404,15 @@ class MainActivity : Activity() {
 
     private fun LinearLayout.text(): String = (tag as? EditText)?.text?.toString() ?: ""
 
+    private fun LinearLayout.setText(value: String) {
+        (tag as? EditText)?.setText(value)
+    }
+
+    private fun LinearLayout.disabled(value: Boolean) {
+        isEnabled = !value
+        alpha = if (value) 0.55f else 1f
+    }
+
     private fun primaryButton(label: String, icon: Int): LinearLayout = actionButton(label, icon, true)
     private fun outlineButton(label: String, icon: Int): LinearLayout = actionButton(label, icon, false)
 
