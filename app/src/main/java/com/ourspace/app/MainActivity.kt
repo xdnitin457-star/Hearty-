@@ -153,7 +153,7 @@ class MainActivity : Activity() {
         header.addView(title(if(role=="boy") "🐈‍⬛ Heartly 💙" else "🎀 Heartly 💗",tc,26f), LinearLayout.LayoutParams(0,WRAP,-1f))
         val logout=button("↪",accent); header.addView(logout, LinearLayout.LayoutParams(55,55))
         root.addView(header)
-        root.addView(sub("Notes • Photos • Little moments",if(role=="boy")Color.LTGRAY:Color.DKGRAY))
+        root.addView(sub("Notes • Photos • Little moments", if (role == "boy") Color.LTGRAY else Color.DKGRAY))
         val addText=input("Write something for your partner...",false)
         val choose=button("📸 Choose photo",accent)
         val send=button("Send to our space",accent)
@@ -192,7 +192,10 @@ class MainActivity : Activity() {
                     notes.forEach{n->
                         val card=TextView(this).apply{
                             text=(if(n.userId==session!!.userId)"You 💙\n" else "Your love 💗\n")+(n.text ?: "📸 Photo shared")+"\n\n"+n.createdAt.replace("T"," ").take(16)
-                            textSize=16f;setTextColor(if(role=="boy")Color.WHITE:Color.rgb(80,30,55));setPadding(24,22,24,22);background=rounded(if(role=="boy")blueCard:pinkCard)
+                          textSize=16f
+setTextColor(if (role == "boy") Color.WHITE else Color.rgb(80,30,55))
+setPadding(24,22,24,22)
+background=rounded(if (role == "boy") blueCard else pinkCard)
                         }
                         list.addView(card,lp())
                         if(n.imageUrl!=null){
