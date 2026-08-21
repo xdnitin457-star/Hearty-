@@ -523,7 +523,7 @@ class MainActivity : Activity() {
     }
 
     private fun input(h: String, password: Boolean, text: Int, hint: Int) = EditText(this).apply {
-        hint = h
+        this.hint = h
         textSize = 15f
         setTextColor(text)
         setHintTextColor(hint)
