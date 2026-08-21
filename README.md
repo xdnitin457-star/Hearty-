@@ -1,6 +1,6 @@
-# Heartly 💙💗
+# Heartly
 
-Native Android couple app MVP. No Flutter required.
+Native Android couple app with a polished romantic/glow UI built around the supplied HEARTLY artwork.
 
 ### Stack
 - Native Android + Kotlin
@@ -10,27 +10,28 @@ Native Android couple app MVP. No Flutter required.
 - Android home-screen AppWidget
 - GitHub Actions APK build
 
-### Features in this MVP
-- Email/password account
-- Boy / girl theme selection
-- Create a 6-character couple code
-- Join with a couple code
+### Included
+- Email/password login and account creation
+- Boy / girl theme selector using the supplied artwork (no emoji character placeholders)
+- Supplied HEARTLY artwork used in the login/home UI and launcher icon
+- 6-character couple-code create/join flow
 - Shared notes
-- Send text and/or image
-- Home-screen widget showing the latest shared note
-- Blue "cute bat-cat" inspired boy theme and pink "cute cat" inspired girl theme
+- Text and image sharing
+- Home-screen widget
+- Animated screen entrance, logo pulse, floating hearts, button feedback, image pop-in and error shake
+- Short local UI sound effects for tap, selection, success, send and error events
+- Android notification channel + notification permission handling for local Heartly activity notifications
 
 ### Setup
 1. Create a Supabase project.
-2. In Authentication settings, for the easiest first test, disable "Confirm email".
+2. For the easiest first test, disable email confirmation in Supabase Authentication settings.
 3. Open SQL Editor and run `supabase_schema.sql`.
-4. Copy your Supabase Project URL and anon/publishable key.
-5. Put them in `app/src/main/java/com/ourspace/app/SupabaseConfig.kt`.
-6. Push the repo to GitHub.
-7. Open Actions -> Build APK.
-8. Download the `our-space-debug-apk` artifact.
+4. Copy your Supabase Project URL and anon/publishable key into `app/src/main/java/com/ourspace/app/SupabaseConfig.kt`.
+5. Push the repo to GitHub.
+6. Open Actions and run **Build Heartly APK**.
+7. Download the `heartly-debug-apk` artifact.
 
 ### Important
-The `media` bucket is public in this MVP so the Android widget can load image URLs easily. Do not use this exact storage policy for highly private production data. A production version should use a private bucket + signed URLs.
-
-Never put a Supabase `service_role` key in the Android app. Only the public anon/publishable key belongs in the client.
+- The Android app must only contain the public anon/publishable key. Never put a Supabase `service_role` key in the APK.
+- The current `media` bucket is public because the widget needs direct image URLs. For production privacy, move to a private bucket and signed URLs.
+- These notifications are local app notifications. True remote partner-to-partner push notifications require a push backend/FCM integration in addition to Supabase.
